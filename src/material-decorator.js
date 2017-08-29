@@ -94,7 +94,7 @@ function materialDecoratorConfig(
       Object.getOwnPropertyNames(args.form.grid).forEach(function(property, idx, array) {
         layoutDiv.setAttribute(property, args.form.grid[property]);
       });
-    };
+    }
   };
 
   function sfMessagesNodeHandler() {
@@ -117,7 +117,7 @@ function materialDecoratorConfig(
     var maxLength = args.form.maxlength || false;
     if (textareaFrag && maxLength) {
       textareaFrag.setAttribute('md-maxlength', maxLength);
-    };
+    }
   };
 
   function mdAutocompleteBuilder(args) {
@@ -130,18 +130,18 @@ function materialDecoratorConfig(
       if (args.form.onChange) {
         mdAutocompleteFrag.setAttribute('md-selected-item-change', 'args.form.onChange()');
         mdAutocompleteFrag.setAttribute('md-search-text-change', 'args.form.onChange(searchText)');
-      };
+      }
 
       // mdAutocompleteFrag.setAttribute('md-items', 'item in $filter(''autocomplete'')(searchText);');
       mdAutocompleteFrag.setAttribute('md-min-length', minLength);
       if (maxLength) {
         mdAutocompleteFrag.setAttribute('md-max-length', maxLength);
-      };
+      }
 
       if (title) {
         mdAutocompleteFrag.setAttribute('md-floating-label', title);
-      };
-    };
+      }
+    }
   };
 
   function mdSwitchBuilder(args) {
@@ -149,7 +149,7 @@ function materialDecoratorConfig(
     if (args.form.schema.titleMap) {
       mdSwitchFrag.setAttribute('ng-true-value', args.form.schema.titleMap.true);
       mdSwitchFrag.setAttribute('ng-false-value', args.form.schema.titleMap.false);
-    };
+    }
   };
 
   function sfOptionsBuilder(args) {
@@ -180,7 +180,7 @@ function materialDecoratorConfig(
     }
     else {
       args.form.selectOptions = sfOptionsProcessor(args.form);
-    };
+    }
   };
 
   function mdDatepickerBuilder(args) {
@@ -233,7 +233,7 @@ function materialDecoratorConfig(
       options.lookup[sfPathProvider.stringify(options.path)] = f;
       return f;
     }
-  };
+  }
 };
 
 function getOptionsHandler(form, evalExpr) {
@@ -243,7 +243,7 @@ function getOptionsHandler(form, evalExpr) {
 
   if (form.selectOptions) {
     return form.selectOptions;
-  };
+  }
 
   return [];
 };
@@ -258,8 +258,8 @@ function sfOptionsProcessor(data) {
     for (i = 0; i < data.enum.length; i++) {
       if (data.enum[i] && data.enum[i].length) {
         enumTitleMap.push({ name: data.enum[i], value: data.enum[i] });
-      };
-    };
+      }
+    }
   };
 
   return enumTitleMap;
@@ -282,7 +282,7 @@ function sfmExternalOptionsDirective($http) {
           scope.form.selectOptions = sfOptionsProcessor(response.data);
         });
     });
-  };
+  }
 };
 
 /**
@@ -297,7 +297,7 @@ function sfCamelKeyFilter() {
       part = key[i].toLowerCase().split('');
       if (i && part.length) { part[0] = part[0].toUpperCase(); };
       key[i] = part.join('');
-    };
+    }
     return key.join('');
   };
 };
