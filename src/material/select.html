@@ -3,12 +3,12 @@
     ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}"
     sf-messages sf-layout>
   <label ng-show="::showTitle()">{{::form.title}}</label>
-  <md-select sf-field-model schema-validate="form">
-    <md-optgroup ng-repeat-start="(key, opt) in form.getOptions(form, evalExpr) | orderBy:'group' as optGroups"
+  <md-select sf-field-model sf-changed="form" schema-validate="form" ng-disabled="form.readonly">
+    <md-optgroup ng-repeat-start="(key, opt) in form.titleMap | orderBy:'group' as optGroups"
                  ng-if="opt.group && opt.group != optGroups[key-1].group"
                  label="{{::opt.group}}"
                  aria-label="{{::opt.group}}">
-      <md-option ng-repeat="(key, filtered) in form.getOptions(form, evalExpr) | filter: {group: opt.group} | orderBy:'name' as opts"
+      <md-option ng-repeat="(key, filtered) in form.titleMap | filter: {group: opt.group} | orderBy:'name' as opts"
                  ng-value="::filtered.value"
                  aria-label="{{::filtered.name}}">{{::filtered.name}}</md-option>
     </md-optgroup>
