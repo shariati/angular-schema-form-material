@@ -28,7 +28,11 @@
     "required": ["name","email","comment"]
   },
   "form": [
-    "name",
+    {
+      "key": "name",
+      "type": "text",
+      "showhint": "Hello"
+    },
     "date",
     "email",
     {

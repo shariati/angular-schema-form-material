@@ -15,4 +15,6 @@
          schema-validate="form"
          name="{{::form.key|sfCamelKey}}"
          aria-describedby="{{::form.key|sfCamelKey}}Status" />
+         <div class="{{::form.hintClass}}" ng-if="::form.showhint">{{::form.showhint}}</div>
+         
 </md-input-container>

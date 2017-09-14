@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-material
  * @version 1.0.0-alpha.3
- * @date Thu, 14 Sep 2017 05:44:56 GMT
+ * @date Thu, 14 Sep 2017 05:52:26 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-material
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -79,7 +79,7 @@
 /***/ (function(module, exports) {
 
 var path = '/material/default.html';
-var html = "<md-input-container class=\"schema-form-{{::form.type}} {{::form.htmlClass}}\"\n                    ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\"\n                    sf-messages sf-layout sf-material-class=\"md-input-has-value\">\n  <label  ng-show=\"showTitle()\" for=\"{{::form.key|sfCamelKey}}\">{{::form.title}}</label>\n  <input sf-field-model\n         ng-show=\"::form.key\"\n         type=\"{{::form.type}}\"\n         step=\"any\"\n         sf-changed=\"form\"\n         placeholder=\"{{::form.placeholder}}\"\n         id=\"{{::form.key|sfCamelKey}}\"\n         ng-class=\"::form.fieldHtmlClass\"\n         sf-type-parser=\"form.schema\"\n         ng-disabled=\"::form.readonly\"\n         schema-validate=\"form\"\n         name=\"{{::form.key|sfCamelKey}}\"\n         aria-describedby=\"{{::form.key|sfCamelKey}}Status\" />\n</md-input-container>\n";
+var html = "<md-input-container class=\"schema-form-{{::form.type}} {{::form.htmlClass}}\"\n                    ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\"\n                    sf-messages sf-layout sf-material-class=\"md-input-has-value\">\n  <label  ng-show=\"showTitle()\" for=\"{{::form.key|sfCamelKey}}\">{{::form.title}}</label>\n  <input sf-field-model\n         ng-show=\"::form.key\"\n         type=\"{{::form.type}}\"\n         step=\"any\"\n         sf-changed=\"form\"\n         placeholder=\"{{::form.placeholder}}\"\n         id=\"{{::form.key|sfCamelKey}}\"\n         ng-class=\"::form.fieldHtmlClass\"\n         sf-type-parser=\"form.schema\"\n         ng-disabled=\"::form.readonly\"\n         schema-validate=\"form\"\n         name=\"{{::form.key|sfCamelKey}}\"\n         aria-describedby=\"{{::form.key|sfCamelKey}}Status\" />\n         <div class=\"{{::form.hintClass}}\" ng-if=\"::form.showhint\">{{::form.showhint}}</div>\n         \n</md-input-container>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
