@@ -12,6 +12,7 @@
                        ng-value="item.value"
                        class="{{::form.fieldHtmlClass}}"
                        sf-field-model="ng-class"
+                       aria-label="item.name"
                        ng-class="{ active: item.value === $$value$$ }">
         <span ng-bind-html="item.name"></span>
       </md-radio-button>
