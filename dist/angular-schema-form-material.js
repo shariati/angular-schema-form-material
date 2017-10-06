@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-material
  * @version 1.0.0-alpha.3
- * @date Fri, 06 Oct 2017 02:01:35 GMT
+ * @date Fri, 06 Oct 2017 02:59:29 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-material
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -142,7 +142,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/checkboxes.html';
-var html = "<div sf-array=\"form\" sf-field-model\n     class=\"form-group schema-form-checkboxes {{::form.htmlClass}}\"\n     ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\"\n     sf-messages>\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{::form.title}}</label>\n  <div class=\"checkboxes\" sf-layout>\n    <div class=\"checkbox\" ng-repeat=\"val in titleMapValues track by $index\">\n      <md-checkbox ng-model=\"titleMapValues[$index]\"\n                   sf-changed=\"form\"\n                   ng-disabled=\"::form.readonly\"\n                   ng-class=\"::form.fieldHtmlClass\"\n                   name=\"{{::form.key|sfCamelKey}}\"\n                   ng-true-value=\"true\"\n                   ng-false-value=\"false\"\n                   aria-label=\"{{::form.title}}\">\n        {{::form.titleMap[$index].name}}\n      </md-checkbox>\n    </div>\n  </div>\n</div>\n";
+var html = "<div sf-array=\"form\" sf-field-model\n     class=\"form-group schema-form-checkboxes {{::form.htmlClass}}\"\n     ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\"\n     sf-messages>\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{::form.title}}</label>\n  <div class=\"checkboxes\" sf-layout>\n    <div class=\"checkbox\" ng-repeat=\"val in titleMapValues track by $index\">\n      <md-checkbox ng-model=\"titleMapValues[$index]\"\n                   sf-changed=\"form\"\n                   ng-disabled=\"::form.readonly || form.titleMap[$index].readonly\"\n                   ng-class=\"::form.fieldHtmlClass\"\n                   name=\"{{::form.key|sfCamelKey}}\"\n                   ng-true-value=\"true\"\n                   ng-false-value=\"false\"\n                   aria-label=\"{{::form.title}}\">\n        {{::form.titleMap[$index].name}}\n      </md-checkbox>\n    </div>\n  </div>\n</div>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 

@@ -7,7 +7,7 @@
     <div class="checkbox" ng-repeat="val in titleMapValues track by $index">
       <md-checkbox ng-model="titleMapValues[$index]"
                    sf-changed="form"
-                   ng-disabled="::form.readonly"
+                   ng-disabled="::form.readonly || form.titleMap[$index].readonly"
                    ng-class="::form.fieldHtmlClass"
                    name="{{::form.key|sfCamelKey}}"
                    ng-true-value="true"
