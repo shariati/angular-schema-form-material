@@ -8,7 +8,7 @@
       <md-checkbox ng-model="titleMapValues[$index]"
                    sf-changed="form"
                    ng-disabled="::form.readonly"
-                   class="{{::form.fieldHtmlClass}}"
+                   ng-class="::form.fieldHtmlClass"
                    name="{{::form.key|sfCamelKey}}"
                    ng-true-value="true"
                    ng-false-value="false"
