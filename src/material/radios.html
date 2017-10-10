@@ -6,6 +6,7 @@
                     sf-changed="form"
                     schema-validate="form"
                     ng-disabled="form.readonly"
+                    id="{{form.key.join('.')}}"
                     name="{{form.key.join('.')}}"
                     sf-layout sf-messages>
       <md-radio-button ng-repeat="item in form.titleMap"

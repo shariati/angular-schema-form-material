@@ -9,6 +9,7 @@
                   sf-changed="form"
                   schema-validate="form"
                   ng-disabled="form.readonly"
+                  id="{{form.key.join('.')}}"
                   name="{{form.key.join('.')}}">
     <md-radio-button ng-repeat="item in form.titleMap" ng-value="item.value" aria-label="item.name">
       <span ng-bind-html="item.name"></span>
