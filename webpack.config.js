@@ -65,7 +65,12 @@ module.exports = {
           options: {
             relativeTo: path.join(__dirname, 'src')
           }
-        }, 'html-loader'],
+        }, {
+          loader: 'html-loader',
+          options: {
+            minimize: true
+          }
+        }],
         exclude: /(index)/
       }
     ]
