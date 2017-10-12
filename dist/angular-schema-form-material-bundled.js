@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-material
  * @version 1.0.0-alpha.3
- * @date Thu, 12 Oct 2017 05:21:58 GMT
+ * @date Thu, 12 Oct 2017 05:56:44 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-material
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -79,7 +79,7 @@
 /***/ (function(module, exports) {
 
 var path = '/material/default.html';
-var html = "<md-input-container class=\"schema-form-{{::form.type}} {{::form.htmlClass}}\"\n                    ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\"\n                    sf-messages sf-layout sf-material-class=\"md-input-has-value\">\n  <label  ng-show=\"showTitle()\" for=\"{{::form.key|sfCamelKey}}\">{{::form.title}}</label>\n  <input sf-field-model\n         ng-show=\"::form.key\"\n         type=\"{{::form.type}}\"\n         step=\"any\"\n         sf-changed=\"form\"\n         placeholder=\"{{::form.placeholder}}\"\n         id=\"{{::form.key|sfCamelKey}}\"\n         ng-class=\"::form.fieldHtmlClass\"\n         sf-type-parser=\"form.schema\"\n         ng-disabled=\"::form.readonly\"\n         schema-validate=\"form\"\n         name=\"{{::form.key|sfCamelKey}}\"\n         aria-describedby=\"{{::form.key|sfCamelKey}}Status\" />\n         <span ng-class=\"::form.hintClass\" ng-if=\"::form.hint.length\">{{::form.hint}}</span>\n</md-input-container>";
+var html = "<md-input-container class=\"schema-form-{{::form.type}} {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\" sf-messages sf-layout sf-material-class=md-input-has-value> <label ng-show=showTitle() for={{::form.key|sfCamelKey}}>{{::form.title}}</label> <input sf-field-model ng-show=::form.key type={{::form.type}} step=any sf-changed=form placeholder={{::form.placeholder}} id={{::form.key|sfCamelKey}} ng-class=::form.fieldHtmlClass sf-type-parser=form.schema ng-disabled=::form.readonly schema-validate=form name={{::form.key|sfCamelKey}} aria-describedby={{::form.key|sfCamelKey}}Status /> <span ng-class=::form.hintClass ng-if=::form.hint.length>{{::form.hint}}</span> </md-input-container>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -88,7 +88,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/checkbox.html';
-var html = "<div class=\"checkbox schema-form-checkbox {{::form.htmlClass}}\"\n     ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\"\n     sf-messages>\n  <md-checkbox sf-field-model\n               sf-changed=\"form\"\n               ng-disabled=\"form.readonly\"\n               schema-validate=\"form\"\n               sf-material-class=\"md-checked\"\n               class=\"{{::form.fieldHtmlClass}}\"\n               name=\"{{::form.key|sfCamelKey}}\"\n               aria-label=\"{{::form.title}}\">\n    <span>{{::form.title}}</span>\n  </md-checkbox>\n</div>";
+var html = "<div class=\"checkbox schema-form-checkbox {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\" sf-messages> <md-checkbox sf-field-model sf-changed=form ng-disabled=form.readonly schema-validate=form sf-material-class=md-checked class={{::form.fieldHtmlClass}} name={{::form.key|sfCamelKey}} aria-label={{::form.title}}> <span>{{::form.title}}</span> </md-checkbox> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -97,7 +97,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/submit.html';
-var html = "<section class=\"schema-form-submit {{::form.htmlClass}}\" sf-messages>\n  <md-button class=\"md-raised {{ form.style || 'md-primary' }} {{::form.fieldHtmlClass}}\"\n             type=\"{{::form.type}}\"\n             ng-disabled=\"form.readonly\"\n             aria-label=\"{{::form.title}}\">\n    <md-tooltip ng-if=\"::form.tip\">{{::form.tip}}</md-tooltip>\n    {{::form.title}}\n  </md-button>\n</section>";
+var html = "<section class=\"schema-form-submit {{::form.htmlClass}}\" sf-messages> <md-button class=\"md-raised {{ form.style || 'md-primary' }} {{::form.fieldHtmlClass}}\" type={{::form.type}} ng-disabled=form.readonly aria-label={{::form.title}}> <md-tooltip ng-if=::form.tip>{{::form.tip}}</md-tooltip> {{::form.title}} </md-button> </section>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -115,7 +115,7 @@ __webpack_require__(20);
 /***/ (function(module, exports) {
 
 var path = '/material/actions.html';
-var html = "<section layout=\"row\" class=\"btn-group schema-form-actions {{form.htmlClass}}\"></section>";
+var html = "<section layout=row class=\"btn-group schema-form-actions {{form.htmlClass}}\"></section>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -124,7 +124,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/array.html';
-var html = "<div  class=\"schema-form-array {{::form.htmlClass}}\"\n      sf-field-model=\"sf-new-array\"\n      sf-new-array>\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{ form.title }}</label>\n  <md-list class=\"list-group\" sf-field-model ui-sortable=\"form.sortOptions\">\n    <md-list-item layout=\"row\" class=\"list-group-item\"\n             sf-field-model=\"ng-repeat\"\n             ng-repeat=\"item in modelArray track by $index\"\n             schema-form-array-items\n             class=\"{{::form.fieldHtmlClass}}\">\n      <md-button flex=\"none\" flex-order=\"2\"\n                 type=\"button\"\n                 ng-hide=\"form.readonly || form.remove === null\"\n                 ng-click=\"deleteFromArray($index)\"\n                 ng-disabled=\"form.schema.minItems >= modelArray.length\"\n                 class=\"md-icon-button\" aria-label=\"More\"\n                 style=\"position: relative; z-index: 20;\">\n        <md-icon>close</md-icon>\n      </md-button>\n    </md-list-item>\n  </md-list>\n  <div class=\"clearfix\" style=\"padding: 15px;\" ng-model=\"modelArray\" schema-validate=\"form\">\n    <div class=\"help-block\"\n         ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\"\n         ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\"></div>\n\n    <md-button ng-hide=\"form.readonly || form.add === null\"\n            ng-click=\"appendToArray()\"\n            ng-disabled=\"form.schema.maxItems <= modelArray.length\"\n            type=\"button\"\n            class=\"btn md-raised md-primary {{ form.style.add || 'btn-default' }} pull-right\">\n      <i class=\"glyphicon glyphicon-plus\"></i>\n      {{ form.add || 'Add'}}\n    </md-button>\n  </div>\n</div>";
+var html = "<div class=\"schema-form-array {{::form.htmlClass}}\" sf-field-model=sf-new-array sf-new-array> <label class=control-label ng-show=showTitle()>{{ form.title }}</label> <md-list class=list-group sf-field-model ui-sortable=form.sortOptions> <md-list-item layout=row class=list-group-item sf-field-model=ng-repeat ng-repeat=\"item in modelArray track by $index\" schema-form-array-items class={{::form.fieldHtmlClass}}> <md-button flex=none flex-order=2 type=button ng-hide=\"form.readonly || form.remove === null\" ng-click=deleteFromArray($index) ng-disabled=\"form.schema.minItems >= modelArray.length\" class=md-icon-button aria-label=More style=position:relative;z-index:20> <md-icon>close</md-icon> </md-button> </md-list-item> </md-list> <div class=clearfix style=padding:15px ng-model=modelArray schema-validate=form> <div class=help-block ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\" ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\"></div> <md-button ng-hide=\"form.readonly || form.add === null\" ng-click=appendToArray() ng-disabled=\"form.schema.maxItems <= modelArray.length\" type=button class=\"btn md-raised md-primary {{ form.style.add || 'btn-default' }} pull-right\"> <i class=\"glyphicon glyphicon-plus\"></i> {{ form.add || 'Add'}} </md-button> </div> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -133,7 +133,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/autocomplete.html';
-var html = "<div class=\"form-group {{::form.htmlClass}} schema-form-select\"\n     ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\"\n     sf-messages sf-layout>\n  <md-autocomplete flex\n    ng-disabled=\"form.readonly\"\n    ng-model=\"$$value$$\"\n    sf-autocomplete\n    sf-field-model=\"replaceAll\"\n    schema-validate=\"form\"\n    md-selected-item=\"$$value$$\"\n    md-search-text=\"searchText\"\n    md-selected-item-change=\"'todo';\"\n    md-items=\"item in evalExpr('this[\\''+form.optionFilter+'\\'](\\''+searchText+'\\')')\"\n    md-item-text=\"item.name\"\n    md-floating-label=\"{{::form.title}}\"\n    md-menu-class=\"autocomplete-custom-template\">\n    <md-item-template>\n      <span md-highlight-text=\"searchText\">{{item.name}}</span>\n    </md-item-template>\n    <md-not-found>\n      No matches found\n    </md-not-found>\n  </md-autocomplete>\n</div>";
+var html = "<div class=\"form-group {{::form.htmlClass}} schema-form-select\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\" sf-messages sf-layout> <md-autocomplete flex ng-disabled=form.readonly ng-model=$$value$$ sf-autocomplete sf-field-model=replaceAll schema-validate=form md-selected-item=$$value$$ md-search-text=searchText md-selected-item-change=\"'todo';\" md-items=\"item in evalExpr('this[\\''+form.optionFilter+'\\'](\\''+searchText+'\\')')\" md-item-text=item.name md-floating-label={{::form.title}} md-menu-class=autocomplete-custom-template> <md-item-template> <span md-highlight-text=searchText>{{item.name}}</span> </md-item-template> <md-not-found> No matches found </md-not-found> </md-autocomplete> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -142,7 +142,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/checkboxes.html';
-var html = "<div sf-array=\"form\" sf-field-model\n     class=\"form-group schema-form-checkboxes {{::form.htmlClass}}\"\n     ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\"\n     sf-messages>\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{::form.title}}</label>\n  <div class=\"checkboxes\" sf-layout>\n    <div class=\"checkbox\" ng-repeat=\"val in titleMapValues track by $index\">\n      <md-checkbox ng-model=\"titleMapValues[$index]\"\n                   sf-changed=\"form\"\n                   ng-disabled=\"::form.readonly || form.titleMap[$index].readonly\"\n                   ng-class=\"::form.fieldHtmlClass\"\n                   name=\"{{::form.key|sfCamelKey}}\"\n                   ng-true-value=\"true\"\n                   ng-false-value=\"false\"\n                   aria-label=\"{{::form.title}}\">\n        {{::form.titleMap[$index].name}}\n      </md-checkbox>\n    </div>\n  </div>\n</div>";
+var html = "<div sf-array=form sf-field-model class=\"form-group schema-form-checkboxes {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\" sf-messages> <label class=control-label ng-show=showTitle()>{{::form.title}}</label> <div class=checkboxes sf-layout> <div class=checkbox ng-repeat=\"val in titleMapValues track by $index\"> <md-checkbox ng-model=titleMapValues[$index] sf-changed=form ng-disabled=\"::form.readonly || form.titleMap[$index].readonly\" ng-class=::form.fieldHtmlClass name={{::form.key|sfCamelKey}} ng-true-value=true ng-false-value=false aria-label={{::form.title}}> {{::form.titleMap[$index].name}} </md-checkbox> </div> </div> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -151,7 +151,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/date.html';
-var html = "<div class=\"schema-form-date {{::form.htmlClass}}\">\n  <label ng-show=\"showTitle()\" for=\"{{::form.key|sfCamelKey}}\">{{::form.title}}</label>\n  <md-datepicker sf-field-model\n                 sf-changed=\"form\"\n                 schema-validate=\"form\"\n                 sf-type-parser=\"form.schema\"\n                 id=\"{{::form.key|sfCamelKey}}\"\n                 ng-show=\"::form.key\"\n                 ng-class=\"::form.fieldHtmlClass\"\n                 ng-disabled=\"::form.readonly\"\n                 md-placeholder=\"Enter date\" sf-messages>\n  </md-datepicker>\n</div>";
+var html = "<div class=\"schema-form-date {{::form.htmlClass}}\"> <label ng-show=showTitle() for={{::form.key|sfCamelKey}}>{{::form.title}}</label> <md-datepicker sf-field-model sf-changed=form schema-validate=form sf-type-parser=form.schema id={{::form.key|sfCamelKey}} ng-show=::form.key ng-class=::form.fieldHtmlClass ng-disabled=::form.readonly md-placeholder=\"Enter date\" sf-messages> </md-datepicker> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -160,7 +160,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/fieldset.html';
-var html = "<fieldset ng-disabled=\"form.readonly\" class=\"standard {{form.htmlClass}}\" flex>\n  <legend ng-show=\"form.title\">{{ form.title }}</legend>\n</fieldset>";
+var html = "<fieldset ng-disabled=form.readonly class=\"standard {{form.htmlClass}}\" flex> <legend ng-show=form.title>{{ form.title }}</legend> </fieldset>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -169,7 +169,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/help.html';
-var html = "<div class=\"helpvalue schema-form-helpvalue {{form.htmlClass}}\" ng-bind-html=\"form.helpvalue\"></div>";
+var html = "<div class=\"helpvalue schema-form-helpvalue {{form.htmlClass}}\" ng-bind-html=form.helpvalue></div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -178,7 +178,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/radio-buttons.html';
-var html = "<div class=\"form-group schema-form-radiobuttons {{::form.htmlClass}}\"\n     ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\" sf-layout sf-messages>\n  <div>\n    <label class=\"control-label\" ng-show=\"showTitle()\">{{form.title}}</label>\n  </div>\n  <section layout=\"row\" layout-sm=\"column\" layout-align=\"center center\">\n    <md-input-container ng-repeat=\"item in form.titleMap\">\n      <md-button type=\"button\"\n                 class=\"group md-raised\"\n                 sf-field-model=\"replaceAll\"\n                 ng-model=\"$$value$$\"\n                 sf-changed=\"form\"\n                 class=\"radio {{::form.fieldHtmlClass}}\"\n                 ng-class=\"{'md-primary': ($$value$$ == item.value)}\"\n                 ng-disabled=\"form.readonly\"\n                 ng-model-options=\"form.ngModelOptions\"\n                 schema-validate=\"form\"\n                 ng-value=\"item.value\"\n                 ng-click=\"$$value$$ = item.value\"\n                 name=\"{{form.key.join('.')}}\">\n        <span ng-bind-html=\"item.name\"></span>\n      </md-button>\n    </md-input-container>\n  </section>\n</div>";
+var html = "<div class=\"form-group schema-form-radiobuttons {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\" sf-layout sf-messages> <div> <label class=control-label ng-show=showTitle()>{{form.title}}</label> </div> <section layout=row layout-sm=column layout-align=\"center center\"> <md-input-container ng-repeat=\"item in form.titleMap\"> <md-button type=button class=\"group md-raised\" sf-field-model=replaceAll ng-model=$$value$$ sf-changed=form class=\"radio {{::form.fieldHtmlClass}}\" ng-class=\"{'md-primary': ($$value$$ == item.value)}\" ng-disabled=form.readonly ng-model-options=form.ngModelOptions schema-validate=form ng-value=item.value ng-click=\"$$value$$ = item.value\" name=\"{{form.key.join('.')}}\"> <span ng-bind-html=item.name></span> </md-button> </md-input-container> </section> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -187,7 +187,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/radios-inline.html';
-var html = "<div class=\"form-group schema-form-radios-inline {{::form.htmlClass}}\"\n     ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\" sf-layout sf-messages>\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{form.title}}</label>\n  <md-radio-group layout=\"row\"\n                  sf-field-model=\"replaceAll\"\n                  ng-model=\"$$value$$\"\n                  class=\"{{::form.fieldHtmlClass}}\"\n                  ng-class=\"{ active: item.value === $$value$$ }\"\n                  sf-changed=\"form\"\n                  schema-validate=\"form\"\n                  ng-disabled=\"form.readonly\"\n                  id=\"{{form.key.join('.')}}\"\n                  name=\"{{form.key.join('.')}}\">\n    <md-radio-button ng-repeat=\"item in form.titleMap\" ng-value=\"item.value\" aria-label=\"item.name\">\n      <span ng-bind-html=\"item.name\"></span>\n    </md-radio-button>\n  </md-radio-group>\n</div>";
+var html = "<div class=\"form-group schema-form-radios-inline {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\" sf-layout sf-messages> <label class=control-label ng-show=showTitle()>{{form.title}}</label> <md-radio-group layout=row sf-field-model=replaceAll ng-model=$$value$$ class={{::form.fieldHtmlClass}} ng-class=\"{ active: item.value === $$value$$ }\" sf-changed=form schema-validate=form ng-disabled=form.readonly id=\"{{form.key.join('.')}}\" name=\"{{form.key.join('.')}}\"> <md-radio-button ng-repeat=\"item in form.titleMap\" ng-value=item.value aria-label=item.name> <span ng-bind-html=item.name></span> </md-radio-button> </md-radio-group> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -196,7 +196,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/radios.html';
-var html = "<div class=\"form-group schema-form-radios {{::form.htmlClass}}\"\n     ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\">\n  <label class=\"control-label\" ng-show=\"showTitle()\" aria-label=\"{{form.title}}\" layout=\"row\">{{form.title}}</label>\n  <div>\n    <md-radio-group sf-field-model\n                    sf-changed=\"form\"\n                    schema-validate=\"form\"\n                    ng-disabled=\"form.readonly\"\n                    id=\"{{form.key.join('.')}}\"\n                    name=\"{{form.key.join('.')}}\"\n                    sf-layout sf-messages>\n      <md-radio-button ng-repeat=\"item in form.titleMap\"\n                       ng-value=\"item.value\"\n                       class=\"{{::form.fieldHtmlClass}}\"\n                       sf-field-model=\"ng-class\"\n                       aria-label=\"item.name\"\n                       ng-class=\"{ active: item.value === $$value$$ }\">\n        <span ng-bind-html=\"item.name\"></span>\n      </md-radio-button>\n    </md-radio-group>\n  </div>\n</div>";
+var html = "<div class=\"form-group schema-form-radios {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\"> <label class=control-label ng-show=showTitle() aria-label={{form.title}} layout=row>{{form.title}}</label> <div> <md-radio-group sf-field-model sf-changed=form schema-validate=form ng-disabled=form.readonly id=\"{{form.key.join('.')}}\" name=\"{{form.key.join('.')}}\" sf-layout sf-messages> <md-radio-button ng-repeat=\"item in form.titleMap\" ng-value=item.value class={{::form.fieldHtmlClass}} sf-field-model=ng-class aria-label=item.name ng-class=\"{ active: item.value === $$value$$ }\"> <span ng-bind-html=item.name></span> </md-radio-button> </md-radio-group> </div> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -205,7 +205,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/section.html';
-var html = "<md-content class=\"schema-form-section {{::form.htmlClass}}\" sf-layout>\n</md-content>\n";
+var html = "<md-content class=\"schema-form-section {{::form.htmlClass}}\" sf-layout> </md-content> ";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -214,7 +214,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/select.html';
-var html = "<md-input-container\n    class=\"form-group {{::form.htmlClass}} schema-form-select\"\n    ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\"\n    sf-messages sf-layout>\n  <label ng-show=\"::showTitle()\">{{::form.title}}</label>\n  <md-select sf-field-model sf-changed=\"form\" schema-validate=\"form\" ng-disabled=\"form.readonly\">\n    <md-optgroup ng-repeat-start=\"(key, opt) in form.titleMap | orderBy:'group' as optGroups\"\n                 ng-if=\"opt.group && opt.group != optGroups[key-1].group\"\n                 label=\"{{::opt.group}}\"\n                 aria-label=\"{{::opt.group}}\">\n      <md-option ng-repeat=\"(key, filtered) in form.titleMap | filter: {group: opt.group} | orderBy:'name' as opts\"\n                 ng-value=\"::filtered.value\"\n                 aria-label=\"{{::filtered.name}}\">{{::filtered.name}}</md-option>\n    </md-optgroup>\n    <md-option   ng-if=\"!opt.group\"\n                 ng-value=\"::opt.value\"\n                 ng-repeat-end>{{::opt.name}}</md-option>\n  </md-select>\n</md-input-container>";
+var html = "<md-input-container class=\"form-group {{::form.htmlClass}} schema-form-select\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\" sf-messages sf-layout> <label ng-show=::showTitle()>{{::form.title}}</label> <md-select sf-field-model sf-changed=form schema-validate=form ng-disabled=form.readonly> <md-optgroup ng-repeat-start=\"(key, opt) in form.titleMap | orderBy:'group' as optGroups\" ng-if=\"opt.group && opt.group != optGroups[key-1].group\" label={{::opt.group}} aria-label={{::opt.group}}> <md-option ng-repeat=\"(key, filtered) in form.titleMap | filter: {group: opt.group} | orderBy:'name' as opts\" ng-value=::filtered.value aria-label={{::filtered.name}}>{{::filtered.name}}</md-option> </md-optgroup> <md-option ng-if=!opt.group ng-value=::opt.value ng-repeat-end>{{::opt.name}}</md-option> </md-select> </md-input-container>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -223,7 +223,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/switch.html';
-var html = "<md-input-container class=\"schema-form-switch {{::form.htmlClass}}\">\n  <md-switch sf-field-model\n             sf-changed=\"form\"\n             sf-type-parser=\"form.schema\"\n             sf-messages\n             schema-validate=\"form\"\n             id=\"{{::form.key|sfCamelKey}}\"\n             aria-label=\"{{form.title}}\"\n             ng-show=\"::form.key\"\n             ng-class=\"form.fieldHtmlClass\"\n             ng-disabled=\"::form.readonly\">\n    <span  ng-show=\"showTitle()\" for=\"{{::form.key|sfCamelKey}}\">{{::form.title}}</span>\n  </md-switch>\n</md-input-container>";
+var html = "<md-input-container class=\"schema-form-switch {{::form.htmlClass}}\"> <md-switch sf-field-model sf-changed=form sf-type-parser=form.schema sf-messages schema-validate=form id={{::form.key|sfCamelKey}} aria-label={{form.title}} ng-show=::form.key ng-class=form.fieldHtmlClass ng-disabled=::form.readonly> <span ng-show=showTitle() for={{::form.key|sfCamelKey}}>{{::form.title}}</span> </md-switch> </md-input-container>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -232,7 +232,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/tabarray.html';
-var html = "\n<div sf-array=\"form\" ng-init=\"selected = { tab: 0 }\"\n     class=\"clearfix schema-form-tabarray schema-form-tabarray-{{form.tabType || 'left'}} {{::form.htmlClass}}\">\n  <div ng-if=\"!form.tabType || form.tabType !== 'right'\"\n       ng-class=\"{'col-xs-3': !form.tabType || form.tabType === 'left'}\">\n    <ul class=\"nav nav-tabs\"\n        ng-class=\"{ 'tabs-left': !form.tabType || form.tabType === 'left'}\">\n      <li ng-repeat=\"item in modelArray track by $index\"\n          ng-click=\"$event.preventDefault() || (selected.tab = $index)\"\n          ng-class=\"{active: selected.tab === $index}\">\n          <a href=\"#\">{{interp(form.title,{'$index':$index, value: item}) || $index}}</a>\n      </li>\n      <li ng-hide=\"form.readonly\" ng-click=\"$event.preventDefault() || (selected.tab = appendToArray().length - 1)\">\n        <a href=\"#\">\n          <i class=\"glyphicon glyphicon-plus\"></i>\n          {{ form.add || 'Add'}}\n          </a>\n      </li>\n    </ul>\n  </div>\n\n  <div ng-class=\"{'col-xs-9': !form.tabType || form.tabType === 'left' || form.tabType === 'right'}\">\n    <div class=\"tab-content {{::form.fieldHtmlClass}}\">\n      <div class=\"tab-pane clearfix\"\n           ng-repeat=\"item in modelArray track by $index\"\n           ng-show=\"selected.tab === $index\"\n           ng-class=\"{active: selected.tab === $index}\">\n           <sf-decorator ng-init=\"arrayIndex = $index\" form=\"copyWithIndex($index)\"></sf-decorator>\n\n\n           <button ng-hide=\"form.readonly\"\n                   ng-click=\"selected.tab = deleteFromArray($index).length - 1\"\n                   type=\"button\"\n                   class=\"btn {{ form.style.remove || 'btn-default' }} pull-right\">\n             <i class=\"glyphicon glyphicon-trash\"></i>\n             {{ form.remove || 'Remove'}}\n           </button>\n      </div>\n    </div>\n  </div>\n\n  <div ng-if=\"form.tabType === 'right'\" class=\"col-xs-3\">\n    <ul class=\"nav nav-tabs tabs-right\">\n      <li ng-repeat=\"item in modelArray track by $index\"\n          ng-click=\"$event.preventDefault() || (selected.tab = $index)\"\n          ng-class=\"{active: selected.tab === $index}\">\n          <a href=\"#\">{{interp(form.title,{'$index':$index, value: item}) || $index}}</a>\n      </li>\n      <li ng-hide=\"form.readonly\" ng-click=\"$event.preventDefault() || appendToArray()\">\n        <a href=\"#\">\n          <i class=\"glyphicon glyphicon-plus\"></i>\n          {{ form.add || 'Add'}}\n          </a>\n      </li>\n    </ul>\n  </div>\n\n</div>";
+var html = "<div sf-array=form ng-init=\"selected = { tab: 0 }\" class=\"clearfix schema-form-tabarray schema-form-tabarray-{{form.tabType || 'left'}} {{::form.htmlClass}}\"> <div ng-if=\"!form.tabType || form.tabType !== 'right'\" ng-class=\"{'col-xs-3': !form.tabType || form.tabType === 'left'}\"> <ul class=\"nav nav-tabs\" ng-class=\"{ 'tabs-left': !form.tabType || form.tabType === 'left'}\"> <li ng-repeat=\"item in modelArray track by $index\" ng-click=\"$event.preventDefault() || (selected.tab = $index)\" ng-class=\"{active: selected.tab === $index}\"> <a href=#>{{interp(form.title,{'$index':$index, value: item}) || $index}}</a> </li> <li ng-hide=form.readonly ng-click=\"$event.preventDefault() || (selected.tab = appendToArray().length - 1)\"> <a href=#> <i class=\"glyphicon glyphicon-plus\"></i> {{ form.add || 'Add'}} </a> </li> </ul> </div> <div ng-class=\"{'col-xs-9': !form.tabType || form.tabType === 'left' || form.tabType === 'right'}\"> <div class=\"tab-content {{::form.fieldHtmlClass}}\"> <div class=\"tab-pane clearfix\" ng-repeat=\"item in modelArray track by $index\" ng-show=\"selected.tab === $index\" ng-class=\"{active: selected.tab === $index}\"> <sf-decorator ng-init=\"arrayIndex = $index\" form=copyWithIndex($index)></sf-decorator> <button ng-hide=form.readonly ng-click=\"selected.tab = deleteFromArray($index).length - 1\" type=button class=\"btn {{ form.style.remove || 'btn-default' }} pull-right\"> <i class=\"glyphicon glyphicon-trash\"></i> {{ form.remove || 'Remove'}} </button> </div> </div> </div> <div ng-if=\"form.tabType === 'right'\" class=col-xs-3> <ul class=\"nav nav-tabs tabs-right\"> <li ng-repeat=\"item in modelArray track by $index\" ng-click=\"$event.preventDefault() || (selected.tab = $index)\" ng-class=\"{active: selected.tab === $index}\"> <a href=#>{{interp(form.title,{'$index':$index, value: item}) || $index}}</a> </li> <li ng-hide=form.readonly ng-click=\"$event.preventDefault() || appendToArray()\"> <a href=#> <i class=\"glyphicon glyphicon-plus\"></i> {{ form.add || 'Add'}} </a> </li> </ul> </div> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -241,7 +241,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/tabs.html';
-var html = "<div sf-field-model class=\"schema-form-tabs {{::form.htmlClass}}\">\n  <md-tabs md-dynamic-height md-selected=\"selected\" md-autoselect ng-init=\"selected = 0\"></md-tabs>\n</div>";
+var html = "<div sf-field-model class=\"schema-form-tabs {{::form.htmlClass}}\"> <md-tabs md-dynamic-height md-selected=selected md-autoselect ng-init=\"selected = 0\"></md-tabs> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -250,7 +250,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/textarea.html';
-var html = "<md-input-container class=\"{{::form.htmlClass}} schema-form-textarea\" sf-messages sf-layout>\n  <label ng-show=\"showTitle()\" for=\"{{::form.key|sfCamelKey}}\">{{::form.title}}</label>\n  <textarea ng-class=\"::form.fieldHtmlClass\"\n            id=\"{{::form.key|sfCamelKey}}\"\n            sf-changed=\"form\"\n            ng-disabled=\"::form.readonly\"\n            sf-field-model\n            schema-validate=\"form\"\n            name=\"{{::form.key|sfCamelKey}}\"></textarea>\n</md-input-container>";
+var html = "<md-input-container class=\"{{::form.htmlClass}} schema-form-textarea\" sf-messages sf-layout> <label ng-show=showTitle() for={{::form.key|sfCamelKey}}>{{::form.title}}</label> <textarea ng-class=::form.fieldHtmlClass id={{::form.key|sfCamelKey}} sf-changed=form ng-disabled=::form.readonly sf-field-model schema-validate=form name={{::form.key|sfCamelKey}}></textarea> </md-input-container>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
