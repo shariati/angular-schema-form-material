@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-material
  * @version 1.0.0-alpha.3
- * @date Thu, 12 Oct 2017 05:56:44 GMT
+ * @date Fri, 13 Oct 2017 09:54:52 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-material
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -79,7 +79,7 @@
 /***/ (function(module, exports) {
 
 var path = '/material/default.html';
-var html = "<md-input-container class=\"schema-form-{{::form.type}} {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\" sf-messages sf-layout sf-material-class=md-input-has-value> <label ng-show=showTitle() for={{::form.key|sfCamelKey}}>{{::form.title}}</label> <input sf-field-model ng-show=::form.key type={{::form.type}} step=any sf-changed=form placeholder={{::form.placeholder}} id={{::form.key|sfCamelKey}} ng-class=::form.fieldHtmlClass sf-type-parser=form.schema ng-disabled=::form.readonly schema-validate=form name={{::form.key|sfCamelKey}} aria-describedby={{::form.key|sfCamelKey}}Status /> <span ng-class=::form.hintClass ng-if=::form.hint.length>{{::form.hint}}</span> </md-input-container>";
+var html = "<md-input-container ng-class=\"['schema-form-' + form.type, form.htmlClass, {'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}]\" sf-messages sf-layout sf-material-class=md-input-has-value> <label ng-show=showTitle() for={{::form.key|sfCamelKey}}>{{::form.title}}</label> <input sf-field-model ng-show=::form.key type={{::form.type}} step=any sf-changed=form placeholder={{::form.placeholder}} id={{::form.key|sfCamelKey}} ng-class=::form.fieldHtmlClass sf-type-parser=form.schema ng-disabled=::form.readonly schema-validate=form name={{::form.key|sfCamelKey}} aria-describedby={{::form.key|sfCamelKey}}Status /> <div ng-class=::form.hintClass ng-if=::form.hint.length>{{::form.hint}}</div> </md-input-container>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -169,7 +169,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/help.html';
-var html = "<div class=\"helpvalue schema-form-helpvalue {{form.htmlClass}}\" ng-bind-html=form.helpvalue></div>";
+var html = "<div ng-class=\"['helpvalue', 'schema-form-helpvalue', form.htmlClass]\" ng-bind-html=form.helpvalue sf-layout></div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -205,7 +205,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/section.html';
-var html = "<md-content class=\"schema-form-section {{::form.htmlClass}}\" sf-layout> </md-content> ";
+var html = "<md-content class=\"schema-form-section {{::form.htmlClass}}\" sf-layout> </md-content>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
