@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-material
  * @version 1.0.0-alpha.3
- * @date Fri, 13 Oct 2017 09:54:52 GMT
+ * @date Wed, 29 Nov 2017 03:30:33 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-material
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -187,7 +187,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/radios-inline.html';
-var html = "<div class=\"form-group schema-form-radios-inline {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\" sf-layout sf-messages> <label class=control-label ng-show=showTitle()>{{form.title}}</label> <md-radio-group layout=row sf-field-model=replaceAll ng-model=$$value$$ class={{::form.fieldHtmlClass}} ng-class=\"{ active: item.value === $$value$$ }\" sf-changed=form schema-validate=form ng-disabled=form.readonly id=\"{{form.key.join('.')}}\" name=\"{{form.key.join('.')}}\"> <md-radio-button ng-repeat=\"item in form.titleMap\" ng-value=item.value aria-label=item.name> <span ng-bind-html=item.name></span> </md-radio-button> </md-radio-group> </div>";
+var html = "<div class=\"form-group schema-form-radios-inline {{::form.htmlClass}}\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess()}\" sf-layout sf-messages> <label class=control-label ng-show=showTitle()>{{form.title}}</label> <md-radio-group layout=row sf-field-model=replaceAll ng-model=$$value$$ ng-class=\"[form.fieldHtmlClass, { active: item.value === $$value$$ }]\" sf-changed=form schema-validate=form ng-disabled=form.readonly id=\"{{form.key.join('.')}}\" name=\"{{form.key.join('.')}}\"> <md-radio-button ng-repeat=\"item in form.titleMap\" ng-value=item.value aria-label=item.name> <span ng-bind-html=item.name></span> </md-radio-button> </md-radio-group> </div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
