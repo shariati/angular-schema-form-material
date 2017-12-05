@@ -1,6 +1,5 @@
 <md-input-container
-    class="form-group {{::form.htmlClass}} schema-form-select"
-    ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}"
+    ng-class="['form-group', 'schema-form-select', form.htmlClass, {'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}]"
     sf-messages sf-layout>
   <label ng-show="::showTitle()">{{::form.title}}</label>
   <md-select sf-field-model sf-changed="form" schema-validate="form" ng-disabled="form.readonly">

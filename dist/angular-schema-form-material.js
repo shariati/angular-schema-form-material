@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-material
  * @version 1.0.0-alpha.3
- * @date Wed, 29 Nov 2017 03:30:33 GMT
+ * @date Tue, 05 Dec 2017 05:23:16 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-material
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -205,7 +205,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/section.html';
-var html = "<md-content class=\"schema-form-section {{::form.htmlClass}}\" sf-layout> </md-content>";
+var html = "<md-content ng-class=\"['schema-form-section', form.htmlClass]\" sf-layout> </md-content>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -214,7 +214,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/material/select.html';
-var html = "<md-input-container class=\"form-group {{::form.htmlClass}} schema-form-select\" ng-class=\"{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}\" sf-messages sf-layout> <label ng-show=::showTitle()>{{::form.title}}</label> <md-select sf-field-model sf-changed=form schema-validate=form ng-disabled=form.readonly> <md-optgroup ng-repeat-start=\"(key, opt) in form.titleMap | orderBy:'group' as optGroups\" ng-if=\"opt.group && opt.group != optGroups[key-1].group\" label={{::opt.group}} aria-label={{::opt.group}}> <md-option ng-repeat=\"(key, filtered) in form.titleMap | filter: {group: opt.group} | orderBy:'name' as opts\" ng-value=::filtered.value aria-label={{::filtered.name}}>{{::filtered.name}}</md-option> </md-optgroup> <md-option ng-if=!opt.group ng-value=::opt.value ng-repeat-end>{{::opt.name}}</md-option> </md-select> </md-input-container>";
+var html = "<md-input-container ng-class=\"['form-group', 'schema-form-select', form.htmlClass, {'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false}]\" sf-messages sf-layout> <label ng-show=::showTitle()>{{::form.title}}</label> <md-select sf-field-model sf-changed=form schema-validate=form ng-disabled=form.readonly> <md-optgroup ng-repeat-start=\"(key, opt) in form.titleMap | orderBy:'group' as optGroups\" ng-if=\"opt.group && opt.group != optGroups[key-1].group\" label={{::opt.group}} aria-label={{::opt.group}}> <md-option ng-repeat=\"(key, filtered) in form.titleMap | filter: {group: opt.group} | orderBy:'name' as opts\" ng-value=::filtered.value aria-label={{::filtered.name}}>{{::filtered.name}}</md-option> </md-optgroup> <md-option ng-if=!opt.group ng-value=::opt.value ng-repeat-end>{{::opt.name}}</md-option> </md-select> </md-input-container>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
